@@ -1,0 +1,6 @@
+2025-08-02 22:23:29 [ERROR]: Cannot destructure property 'newpassword' of 'req.body' as it is undefined. - POST /password/resetpassword/05a7f4f7-2b6f-447f-9eb4-a0d38f932aed
+2025-08-02 22:23:54 [ERROR]: Cannot destructure property 'newpassword' of 'req.body' as it is undefined. - POST /password/resetpassword/05a7f4f7-2b6f-447f-9eb4-a0d38f932aed
+2025-08-02 22:24:06 [ERROR]: Cannot destructure property 'newpassword' of 'req.body' as it is undefined. - POST /password/resetpassword/05a7f4f7-2b6f-447f-9eb4-a0d38f932aed
+2025-08-02 22:34:18 [ERROR]: Cannot destructure property 'newpassword' of 'req.body' as it is undefined. - POST /password/resetpassword/05a7f4f7-2b6f-447f-9eb4-a0d38f932aed
+2025-08-02 22:35:29 [ERROR]: Cannot destructure property 'newpassword' of 'req.body' as it is undefined. - POST /password/resetpassword/05a7f4f7-2b6f-447f-9eb4-a0d38f932aed
+2025-08-02 22:35:58 [ERROR]: Cannot destructure property 'newpassword' of 'req.body' as it is undefined. - POST /password/resetpassword/6cf9ba84-b98b-468c-92b4-a5af42838e9c
