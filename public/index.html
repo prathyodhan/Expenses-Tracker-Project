@@ -7,100 +7,101 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Expense Tracker</h1>
+  <div class="app-container">
+    <h1 class="app-title"> Expense Tracker</h1>
 
-  
-  <div id="login-box">
-    <h2>Login</h2>
-    <input id="login-email" type="email" placeholder="Email" />
-    <input id="login-password" type="password" placeholder="Password" />
-    <button onclick="login()">Login</button>
-    <p>New user? <a href="#" onclick="showSignup()">Sign up</a></p>
-    <p><a href="#" onclick="showForgotPassword()">Forgot password?</a></p>
-  </div>
+    <!-- Login -->
+    <section id="login-box" class="card glass">
+      <h2>Login</h2>
+      <input id="login-email" type="email" placeholder="Email" />
+      <input id="login-password" type="password" placeholder="Password" />
+      <button class="btn neon" onclick="login()">Login</button>
+      <p>New user? <a href="#" onclick="showSignup()">Sign up</a></p>
+      <p><a href="#" onclick="showForgotPassword()">Forgot password?</a></p>
+    </section>
 
+    <!-- Forgot Password -->
+    <section id="forgot-password-box" class="card glass" style="display: none;">
+      <h2>Forgot Password</h2>
+      <input id="forgot-email" type="email" placeholder="Enter your email" />
+      <button class="btn neon" onclick="submitForgotPassword()">Send Reset Email</button>
+      <p><a href="#" onclick="showLogin()">Back to login</a></p>
+    </section>
 
-  <div id="forgot-password-box" style="display: none;">
-    <h2>Forgot Password</h2>
-    <input id="forgot-email" type="email" placeholder="Enter your email" />
-    <button onclick="submitForgotPassword()">Send Reset Email</button>
-    <p><a href="#" onclick="showLogin()">Back to login</a></p>
-  </div>
+    <!-- Signup -->
+    <section id="signup-box" class="card glass" style="display: none;">
+      <h2>Sign Up</h2>
+      <input id="signup-name" type="text" placeholder="Name" />
+      <input id="signup-email" type="email" placeholder="Email" />
+      <input id="signup-password" type="password" placeholder="Password" />
+      <button class="btn neon" onclick="signup()">Register</button>
+      <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+    </section>
 
-  <!-- Signup Form -->
-  <div id="signup-box" style="display: none;">
-    <h2>Sign Up</h2>
-    <input id="signup-name" type="text" placeholder="Name" />
-    <input id="signup-email" type="email" placeholder="Email" />
-    <input id="signup-password" type="password" placeholder="Password" />
-    <button onclick="signup()">Register</button>
-    <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
-  </div>
+    <!-- Expenses -->
+    <section id="expense-box" class="card glass" style="display: none;">
+      <h2>My Expenses</h2>
+      <div class="form-inline">
+        <input id="expense-amount" type="number" placeholder="Amount" />
+        <input id="expense-description" type="text" placeholder="Description" />
+        <input id="expense-category" type="text" placeholder="Category" />
+        <button class="btn neon" onclick="addExpense()"> Add</button>
+      </div>
 
-  <!-- Expenses Section -->
-  <div id="expense-box" style="display: none;">
-    <h2>My Expenses</h2>
-    <input id="expense-amount" type="number" placeholder="Amount" />
-    <input id="expense-description" type="text" placeholder="Description" />
-    <input id="expense-category" type="text" placeholder="Category" />
-    <button onclick="addExpense()">Add Expense</button>
-
-    <div class="filter-section">
-      <label for="time-filter">View:</label>
-      <select id="time-filter" onchange="filterExpenses()">
-        <option value="daily">Daily</option>
-        <option value="weekly">Weekly</option>
-        <option value="monthly">Monthly</option>
-      </select>
-    </div>
-
-    <!-- Manual Input for Expenses per Page -->
-    <div class="pagination-settings">
-      <label for="expense-count">Expenses per page:</label>
-      <input id="expense-count" type="number" min="1" value="1" oninput="manualExpensesPerPage()" />
-    </div>
-
-    <ul id="expense-list"></ul>
-
-    <div class="pagination">
-      <button onclick="prevPage()">Prev</button>
-      <span id="page-indicator">Page 1</span>
-      <button onclick="nextPage()">Next</button>
-    </div>
-
-    <!-- Premium Section -->
-    <div id="premium-box" style="display:none;">
-      <p>🎉 You are a premium user</p>
-      <button id="show-leaderboard">Show Leaderboard</button>
-      <ul id="leaderboard-list" style="display:none;"></ul>
-
-      <!-- Report Section -->
-      <button id="toggle-report">Show Report</button>
-      <div id="report-section" style="display:none; margin-top:10px;">
-        <h3>Expense & Income Report</h3>
-        <select id="report-filter" onchange="renderReport(this.value)">
-          <option value="all">All</option>
+      <div class="filter-section">
+        <label for="time-filter">View:</label>
+        <select id="time-filter" onchange="filterExpenses()">
           <option value="daily">Daily</option>
           <option value="weekly">Weekly</option>
           <option value="monthly">Monthly</option>
         </select>
-        <table border="1" id="report-table" style="width:100%; margin-top:10px;">
-          <thead>
-            <tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <button id="download-report">Download Report</button>
       </div>
-    </div>
 
-    
-    <div id="upgrade-box" style="display:none;">
-      <p> Want to unlock premium features?</p>
-      <button onclick="becomePremium()">Become Premium User</button>
-    </div>
+      <div class="pagination-settings">
+        <label for="expense-count">Expenses per page:</label>
+        <input id="expense-count" type="number" min="1" value="1" oninput="manualExpensesPerPage()" />
+      </div>
 
-    <button onclick="logout()">Logout</button>
+      <ul id="expense-list" class="list"></ul>
+
+      <div class="pagination">
+        <button class="btn" onclick="prevPage()">⬅ Prev</button>
+        <span id="page-indicator">Page 1</span>
+        <button class="btn" onclick="nextPage()">Next ➡</button>
+      </div>
+
+      <!-- Premium Section -->
+      <div id="premium-box" style="display:none;">
+        <p class="highlight"> You are a premium user</p>
+        <button id="show-leaderboard" class="btn neon">Show Leaderboard</button>
+        <ul id="leaderboard-list" class="list" style="display:none;"></ul>
+
+        <button id="toggle-report" class="btn neon">Show Report</button>
+        <div id="report-section" style="display:none; margin-top:10px;">
+          <h3> Expense & Income Report</h3>
+          <select id="report-filter" onchange="renderReport(this.value)">
+            <option value="all">All</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+          <table id="report-table" class="styled-table">
+            <thead>
+              <tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <button id="download-report" class="btn neon">⬇ Download Report</button>
+        </div>
+      </div>
+
+      <div id="upgrade-box" style="display:none;">
+        <p> Want to unlock premium features?</p>
+        <button class="btn neon" onclick="becomePremium()">Become Premium User</button>
+      </div>
+
+      <button class="btn danger" onclick="logout()"> Logout</button>
+    </section>
   </div>
 
   <script src="script.js"></script>
